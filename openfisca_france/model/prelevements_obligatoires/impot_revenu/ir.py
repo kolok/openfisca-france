@@ -402,13 +402,20 @@ class revenu_assimile_salaire(Variable):
         # mise en parallèle avec avec le fonctionnement spécifique de al_revenu_assimile_salaire
         period_salaire_chomage = period
         period_f1tt_f3vj = period
+        smic_annuel_brut = parameters(period).cotsoc.gen.smic_h_b * 52 * 35
 
         salaire_imposable = individu('salaire_imposable', period_salaire_chomage, options = [ADD])
         chomage_imposable = individu('chomage_imposable', period_salaire_chomage, options = [ADD])
         f1tt = individu('f1tt', period_f1tt_f3vj)
         f3vj = individu('f3vj', period_f1tt_f3vj)
 
-        return salaire_imposable + chomage_imposable + f1tt + f3vj
+        # Application du plafond d'exoneration fiscal pour les salaires des stagiaires et des apprentis
+        remuneration_apprenti = individu('remuneration_apprenti', period_salaire_chomage, options=[ADD])
+        remuneration_apprenti_apres_abattement = max(0, sum(remuneration_apprenti) - smic_annuel_brut)
+        indemnites_stage = individu('indemnites_stage', period_salaire_chomage, options=[ADD])
+        indemnites_stage_apres_abattement = max(0, sum(indemnites_stage) - smic_annuel_brut)
+
+        return salaire_imposable + chomage_imposable + f1tt + f3vj + remuneration_apprenti_apres_abattement + indemnites_stage_apres_abattement
 
 
 class revenu_assimile_salaire_apres_abattements(Variable):
