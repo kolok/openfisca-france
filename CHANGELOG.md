@@ -1,5 +1,16 @@
 # Changelog
 
+### 48.17.1 [#1459](https://github.com/openfisca/openfisca-france/pull/1459)
+
+* Évolution du système socio-fiscal.
+* Périodes concernées : à partir du 01/04/2020.
+* Zones impactées : 
+  - `openfisca_france/parameters/prestations/minima_sociaux/asi/`
+  - `openfisca_france/parameters/prestations/minima_sociaux/aah/montant.yaml`
+* Détails :
+  - ASI : met à jour les paramètres de montants et plafonds.
+  - AAH : met à jour la référence législative pour 2020.
+
 ## 48.17.0 [#1453](https://github.com/openfisca/openfisca-france/pull/1453)
 
 * Évolution du système socio-fiscal.
