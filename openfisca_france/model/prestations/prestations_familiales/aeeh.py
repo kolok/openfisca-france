@@ -109,13 +109,14 @@ class aeeh_eligible(Variable):
         besoin_educatif_particulier = famille.members('besoin_educatif_particulier', janvier)
 
         prestations_familiales = parameters(period).prestations.prestations_familiales
+
         residence = famille.members.menage('residence', period)
 
         condition_age = (age < prestations_familiales.aeeh.age)
         condition_taux_incapacite = ((
-                                                 taux_incapacite >= prestations_familiales.aeeh.taux_incapacite_maximal.taux_incapacite_maximal_aeeh) + (
+                                             taux_incapacite >= prestations_familiales.aeeh.taux_incapacite_maximal.taux_incapacite_maximal_aeeh) + (
                                              (
-                                                         taux_incapacite >= prestations_familiales.aeeh.taux_incapacite_minimal.taux_incapacite_minimal_aeeh) * (
+                                                     taux_incapacite >= prestations_familiales.aeeh.taux_incapacite_minimal.taux_incapacite_minimal_aeeh) * (
                                                      taux_incapacite < prestations_familiales.aeeh.taux_incapacite_maximal.taux_incapacite_maximal_aeeh) * besoin_educatif_particulier))
 
         condition_residence_FR = False if residence == TypesLieuResidence.non_renseigne else True
