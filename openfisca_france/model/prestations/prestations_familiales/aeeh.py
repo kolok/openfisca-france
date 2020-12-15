@@ -55,7 +55,7 @@ class aeeh(Variable):
         enfant_handicape = handicap * (age < prestations_familiales.aeeh.age)
 
         montant_par_enfant = enfant_handicape * (
-                prestations_familiales.af.bmaf * (
+            prestations_familiales.af.bmaf * (
                 base
                 + (niveau_handicap == 1) * cpl['1ere_categorie']
                 + (niveau_handicap == 2) * (cpl['1ere_categorie'] + maj['2e_categorie'] * isole)
@@ -63,8 +63,8 @@ class aeeh(Variable):
                 + (niveau_handicap == 4) * (cpl['3e_categorie'] + maj['4e_categorie'] * isole)
                 + (niveau_handicap == 5) * (cpl['4e_categorie'] + maj['5e_categorie'] * isole)
                 + (niveau_handicap == 6) * (maj['6e_categorie'] * isole)
-        ) + (niveau_handicap == 6) * cpl['6e_categorie_1']
-        ) / 12
+                ) + (niveau_handicap == 6) * cpl['6e_categorie_1']
+            ) / 12
 
         montant_total = famille.sum(montant_par_enfant, role=Famille.ENFANT)
 
@@ -114,10 +114,10 @@ class aeeh_eligible(Variable):
 
         condition_age = (age < prestations_familiales.aeeh.age)
         condition_taux_incapacite = ((
-                                             taux_incapacite >= prestations_familiales.aeeh.taux_incapacite_maximal.taux_incapacite_maximal_aeeh) + (
-                                             (
-                                                     taux_incapacite >= prestations_familiales.aeeh.taux_incapacite_minimal.taux_incapacite_minimal_aeeh) * (
-                                                     taux_incapacite < prestations_familiales.aeeh.taux_incapacite_maximal.taux_incapacite_maximal_aeeh) * besoin_educatif_particulier))
+            taux_incapacite >= prestations_familiales.aeeh.taux_incapacite_maximal.taux_incapacite_maximal_aeeh) + (
+            (
+                taux_incapacite >= prestations_familiales.aeeh.taux_incapacite_minimal.taux_incapacite_minimal_aeeh) * (
+                taux_incapacite < prestations_familiales.aeeh.taux_incapacite_maximal.taux_incapacite_maximal_aeeh) * besoin_educatif_particulier))
 
         condition_residence_FR = False if residence == TypesLieuResidence.non_renseigne else True
 
