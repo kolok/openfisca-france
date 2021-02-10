@@ -28,14 +28,14 @@ class aide_logement(Variable):
     set_input = set_input_divide_by_period
 
     def formula(famille, period):
-        apl = famille('apl', period)
+        apl_erreur = famille('apl_erreur', period)
         als = famille('als', period)
         alf = famille('alf', period)
 
-        return max_(max_(apl, als), alf)
+        return max_(max_(apl_erreur, als), alf)
 
 
-class apl(Variable):
+class apl_erreur(Variable):
     documentation = "Réservée aux logements conventionnés, surtout des HLM, et financée par le fonds national de l'habitation."
     calculate_output = calculate_output_add
     value_type = float
