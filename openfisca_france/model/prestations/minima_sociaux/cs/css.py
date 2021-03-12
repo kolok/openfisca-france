@@ -9,7 +9,7 @@ from openfisca_france.model.base import (
     )
 
 
-class css_participation_forfaitaire_montant_i(Variable):
+class complementaire_sante_solidaire_montant_i(Variable):
     value_type = float
     entity = Individu
     label = "Montant de la participation forfaitaire d'une personne"
@@ -51,11 +51,11 @@ class css_participation_forfaitaire_montant(Variable):
     definition_period = MONTH
 
     def formula(famille, period, parameters):
-        css_participation_forfaitaire_i = famille.members('css_participation_forfaitaire_montant_i', period)
+        css_participation_forfaitaire_i = famille.members('complementaire_sante_solidaire_montant_i', period)
         return famille.sum(css_participation_forfaitaire_i)
 
 
-class css_participation_forfaitaire(Variable):
+class complementaire_sante_solidaire(Variable):
     value_type = float
     label = "Montant annuel de la participation forfaitaire à la CSS"
     entity = Famille

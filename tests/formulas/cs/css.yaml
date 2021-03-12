@@ -294,7 +294,7 @@
     age: [29, 30, 49, 50, 59, 60, 69, 70]
     salarie_regime_alsace_moselle: [false, false, false, false, false, false, false, false]
   output:
-    css_participation_forfaitaire_montant_i: [8, 14, 14, 21, 21, 25, 25, 30]
+    complementaire_sante_solidaire_montant_i: [8, 14, 14, 21, 21, 25, 25, 30]
 
 - name: "CSS: Montant de cotisation CSS - Alsace-Moselle"
   period: 2019-11
@@ -302,4 +302,4 @@
     age: [29, 30, 49, 50, 59, 60, 69, 70]
     salarie_regime_alsace_moselle: [true, true, true, true, true, true, true, true]
   output:
-    css_participation_forfaitaire_montant_i: [2.80, 4.90, 4.90, 7.30, 7.30, 8.70, 8.70, 10.50]
+    complementaire_sante_solidaire_montant_i: [2.80, 4.90, 4.90, 7.30, 7.30, 8.70, 8.70, 10.50]
